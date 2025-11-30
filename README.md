@@ -131,11 +131,11 @@ python Sebas.py
 ## .exe Deployment Requirement -
 ---
 ### 1. Download the sorting_rules.json, .env(enter your own API inside it), an dthe Sebas.exe 
----
+      https://drive.google.com/drive/folders/1dgYN27Sk4zpFhy6gUf4uxAOzUsfFXnx3?usp=sharing
 ### 2. Put them inside same directory
----
+
 ### 3. Run the Sebas.exe file
----
+
 ## ⌨️ Hotkeys
 
 | Hotkey       | Action                                                                      |
