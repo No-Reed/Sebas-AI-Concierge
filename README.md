@@ -128,7 +128,14 @@ python Sebas.py
 - **Manual:** Use the HUD buttons to "Analyze" or "Chat".
 
 ---
-
+## .exe Deployment Requirement -
+---
+### 1. Download the sorting_rules.json, .env(enter your own API inside it), an dthe Sebas.exe 
+---
+### 2. Put them inside same directory
+---
+### 3. Run the Sebas.exe file
+---
 ## ⌨️ Hotkeys
 
 | Hotkey       | Action                                                                      |
