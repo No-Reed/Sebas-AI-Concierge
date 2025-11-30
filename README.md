@@ -1,6 +1,6 @@
-# 🎩 **Sebastian: The AI Digital Concierge**
+# 🎩 Sebastian: The AI Digital Concierge
 
-> *"I am simply one hell of a digital butler."*
+"I am simply one hell of a digital butler."
 
 ---
 
@@ -8,7 +8,7 @@
 
 Sebastian is a local, multi-agent desktop concierge designed to manage the "household chores" of a developer's digital life. While you focus on high-value creative work, Sebastian handles background maintenance, file organization, debugging, and session context management.
 
-Submitted for the Google AI Agents Capstone (Concierge Agents Track).
+Submitted for the Google AI Agents Capstone (Freestyle / Concierge Agents Track).
 
 ---
 
@@ -16,114 +16,141 @@ Submitted for the Google AI Agents Capstone (Concierge Agents Track).
 
 ### The Problem
 
-Developers lose hours weekly to **digital entropy**:
+Developers lose hours weekly to digital entropy:
 
-* Constant context switching
-* Cluttered downloads/temp folders
-* Micro-bugs that interrupt deep work
+- **Context Switching:** Breaking flow to copy-paste errors into a browser AI.
+- **File Clutter:** Downloads and temp folders becoming unmanageable dumps.
+- **Micro-Friction:** Repetitive tasks like formatting JSON or writing boilerplate emails.
 
 ### The Solution
 
-Sebastian functions as an **autonomous agentic OS overlay**:
+Sebastian functions as an autonomous agentic OS overlay that lives on your machine:
 
-* 👀 Monitors screen and file system
-* 🛹 Sorts files automatically using `sorting_rules.json`
-* 🛠️ Analyzes code, detects bugs, and provides fixes via hotkey or voice
+- 👀 **Vision-Based:** Monitors your screen pixel-by-pixel to detect when you are stuck.
+- 🛹 **Auto-Sorting:** Automatically organizes files into semantic categories (Finance, Dev, Personal) using `sorting_rules.json`.
+- 🛠️ **Proactive Help:** Analyzes code, detects bugs, and provides fixes via a non-intrusive HUD.
 
 ### The Value
 
-Sebastian reduces cognitive load and gives you a **maintenance-free digital environment**.
+Sebastian reduces cognitive load and gives you a maintenance-free digital environment, saving **5–10 hours** of "digital housekeeping" per week.
 
 ---
 
 ## ⚙️ Technical Architecture
 
-Sebastian uses a **Hub-and-Spoke Multi-Agent Architecture** powered by Gemini 2.0 Flash.
+Sebastian uses a **Local Loop-based Agentic Architecture** powered by the multimodal capabilities of **Google Gemini 2.0 Flash**.
 
 ### Core Components
 
-#### 🧠 The Orchestrator
+#### 🧠 The Brain (Gemini 2.0)
 
-* Routes tasks
-* Decides between parallel vs sequential agent execution
-* Manages lifecycle and context
+- Uses Gemini's multimodal vision capabilities to "see" screen state directly.
+- Dynamic system prompts inject task-specific personas.
+
+#### 👁️ Perception Layer
+
+- **Vision:** `pyautogui` captures screen state; `ImageChops` detects motion/idleness.
+- **File System:** `watchdog` monitors OS events (Created, Moved, Modified) in real-time.
+
+#### 💾 Memory Layer
+
+- **Short-Term:** Thread-safe real-time state for HUD updates.
+- **Long-Term:** JSON-based persistence (`sebas_long_term_memory.json`).
+
+#### 🦾 Action Layer
+
+- **HUD:** Custom tkinter overlay offers contextual assistance.
+- **File Ops:** Autonomous file moving, renaming, and content generation.
 
 ---
 
-## 🕵️ Agents
+## 🧰 Key Features (Capstone Checklist)
 
-* **CodeAnalyzer:** Parses visible code
-* **BugDetector:** Finds syntax/logic errors
-* **FixGenerator:** Generates line-level fixes
-* **SecurityAuditor:** Checks for vulnerabilities
-* **Memory Bank:** Persistent long-term memory
-* **Watchdog:** Real-time file I/O watcher and sorter
-
----
-
-## 🧰 Key Features
-
-* ✅ Multi-agent architecture
-* ✅ Tools Registry
-* ✅ Context compaction
-* ✅ Metrics and telemetry
-* ✅ Independent background processes
+- ✅ Multimodality (Screen Images + Text)
+- ✅ Custom Tools for code analysis & file manipulation
+- ✅ Long-Term Memory with MemoryManager
+- ✅ Observability via `sebas.log`
 
 ---
 
 ## 📂 Project Structure
 
-```plaintext
+```
 Sebastian/
 │
-├── Sebas.py                 # Main entry point, UI logic, and Agent definitions
+├── Sebas.py                     # Main entry point, UI logic, and Agent definitions
 │
-├── sebastian_config.json    # Configuration for cooldowns, thresholds, and UI position
+├── sebas_config.json            # Configuration for cooldowns, thresholds, and UI position
 │
-├── sorting_rules.json       # Taxonomy for the file organizer
+├── sorting_rules.json           # Taxonomy for the file organizer (User Customizable)
 │
-├── memory_bank.json         # Persistent storage for agent memories
+├── sebas_long_term_memory.json  # Persistent brain for agent memories
 │
-├── sessions.json            # Logs of interaction sessions and workflows
-│
-└── metrics.json             # Telemetry data for agent performance
+└── sebas.log                    # Telemetry and event logs
 ```
 
 ---
 
-## 🚀 Usage
+## 🚀 How to Run (Local Deployment)
 
-**Start Sebastian**
+Sebastian is designed as a **Local Desktop Agent** for privacy and OS-level control.
+
+### 1. Clone the Repo
 
 ```
-python3 Sebas.py
+git clone https://github.com/No-Reed/Sebas-AI-Concierge.git
+cd Sebas-AI-Concierge
 ```
 
-**Trigger Hotkeys**
+### 2. Install Dependencies
+
+```
+pip install -r requirements.txt
+```
+
+### 3. Setup Keys
+
+Create a `.env` file:
+
+```
+GEMINI_API_KEY=...
+```
+
+### 4. Launch Sebastian
+
+```
+python Sebas.py
+```
+
+### 5. Interact
+
+- **Auto-Mode:** Simply work; Sebastian analyzes when you're idle or stuck.
+- **Manual:** Use the HUD buttons to "Analyze" or "Chat".
+
+---
+
+## ⌨️ Hotkeys
 
 | Hotkey       | Action                                                                      |
 | ------------ | --------------------------------------------------------------------------- |
 | Ctrl+Shift+A | Auto-Analyze: Triggers the Multi-Agent workflow on the current screen/file. |
-| Ctrl+Shift+S | Apply Fixes: Automatically applies generated code fixes to the active file. |
-| Ctrl+Shift+M | Metrics: Exports usage data to metrics.json.                                |
-| Ctrl+Shift+R | Restore: Brings the GUI back if minimized.                                  |
-
-**Automatic File Sorting****
-Files are categorized and moved based on the rules defined in `sorting_rules.json`.
+| Ctrl+Shift+S | Apply Fixes: Automatically applies generated code fixes.                    |
+| Ctrl+Shift+M | Metrics: Exports usage data to `metrics.json`.                              |
+| Ctrl+Shift+R | Restore: Reopens the GUI if minimized.                                      |
 
 ---
 
-## 🛡️ Security Notes
+## 🛡️ Security & Privacy
 
-* Fully offline
-* No uploading of user files or code
-* Memory Bank stored as encrypted JSON
+- **Local-First:** No files are uploaded except specific snippets for Gemini API calls.
+- **Encrypted Keys:** API tokens are stored in `.env`.
+- **No Cloud Storage:** All memory and logs are stored locally.
 
 ---
 
 ## 🧭 Roadmap
 
-* GUI Dashboard
-* Plugin Ecosystem
-* AI-Assisted Refactoring Engine
-* Multi-Device Sync
+- [ ] GUI Dashboard for configuring sorting rules.
+- [ ] Voice Interaction mode.
+- [ ] Multi-Device Sync for memory sharing.
+
